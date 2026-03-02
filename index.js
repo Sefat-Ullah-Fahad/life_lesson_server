@@ -10,6 +10,19 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 
+
+
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://digital-life-lessons.vercel.app' // এখানে আপনার ফ্রন্টএন্ডের লাইভ ইউআরএলটি দিন
+  ],
+  credentials: true
+}));
+
+
+
+
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.fvgkirv.mongodb.net/?appName=Cluster0`;
 
 const client = new MongoClient(uri, {
